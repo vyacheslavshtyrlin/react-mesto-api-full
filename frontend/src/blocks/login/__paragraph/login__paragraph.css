@@ -1,0 +1,11 @@
+.login__paragraph {
+  text-align: center;
+  margin-top: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  text-decoration: none;
+  outline: none;
+}

@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "yandex-praktikum project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint .",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vyacheslavshtyrlin/express-mesto-gha.git"
+  },
+  "author": "vyacheslav shtyrlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vyacheslavshtyrlin/express-mesto-gha/issues"
+  },
+  "homepage": "https://github.com/vyacheslavshtyrlin/express-mesto-gha#readme",
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "celebrate": "^15.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-winston": "^4.2.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.5",
+    "validator": "^13.7.0",
+    "winston": "^3.8.1"
+  }
+}
