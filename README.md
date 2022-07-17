@@ -3,3 +3,5 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
   [Ссылка](https://mesto.vyacheslavshtyrlin.nomoredomains.xyz/)
+Домен - mesto.vyacheslavshtyrlin.nomoredomains.xyz
+Публичный IP - 51.250.76.210
