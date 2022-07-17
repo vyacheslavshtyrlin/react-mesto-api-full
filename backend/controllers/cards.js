@@ -1,6 +1,5 @@
 const Cards = require('../models/card');
 const NotFound = require('../errors/notFoundError');
-const Conflict = require('../errors/conflictError');
 const BadRequest = require('../errors/badRequest');
 const Forbidden = require('../errors/forbidden');
 
@@ -15,9 +14,7 @@ module.exports.createCard = (req, res, next) => {
   Cards.create({ name, link, owner: req.user._id })
     .then((card) => res.send(card))
     .catch((error) => {
-      if (error.code === 11000) {
-        throw new Conflict('Пользователь с таким e-mail уже зарегестрирован');
-      } else if (error.name === 'ValidationError' || error.name === 'CastError') {
+      if (error.name === 'ValidationError' || error.name === 'CastError') {
         throw new BadRequest(error.message);
       }
       throw error;
@@ -26,15 +23,16 @@ module.exports.createCard = (req, res, next) => {
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  Cards.findByIdAndRemove(req.params.cardId, { new: true })
+  Cards.findById(req.params.cardId)
     .orFail(() => {
       throw new NotFound('Нет карточки по заданному id');
     })
     .then((card) => {
-      if (card.owner.toString() !== req.user._id.toString()) {
-        throw new Forbidden('У вас нет доступа');
+      if (!card.owner.equals(req.user._id)) {
+        throw new Forbidden('Нельзя удалять чужие карточки');
       }
-      res.send({ data: card });
+      card.remove()
+        .then(() => res.send({ message: 'Карточка удалена' }));
     })
     .catch(next);
 };
